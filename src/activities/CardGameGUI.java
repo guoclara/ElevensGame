@@ -1,5 +1,5 @@
 package activities;
-import Activity7_9.Card;
+import activities.Card;
 import java.awt.Point;
 import java.awt.Graphics;
 import java.awt.Dimension;
@@ -264,7 +264,7 @@ public class CardGameGUI extends JFrame implements ActionListener {
 	 * @return String representation of the image
 	 */
 	private String imageFileName(Card c, boolean isSelected) {
-		String str = "cards/";
+		String str = "/cards/";
 		if (c == null) {
 			return "cards/back1.GIF";
 		}

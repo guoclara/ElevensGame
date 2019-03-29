@@ -1,6 +1,6 @@
 package activities;
-import Activity7_9.Card;
-import Activity7_9.Deck;
+import activities.Card;
+import activities.Deck;
 import java.util.List;
 import java.util.ArrayList;
 
@@ -171,12 +171,14 @@ public abstract class Board {
 	/**
 	 * Method to be completed by the concrete class that determines
 	 * if there are any legal plays left on the board.
+         * check 2 or 3 cards are selected, if 2 add up to 11 or if 3 are jqk
 	 * @return true if there is a legal play left on the board;
 	 *         false otherwise.
 	 */
 	public abstract boolean anotherPlayIsPossible();
 
 	/**
+         * contains pair sum, contains jqk = true, then another possible
 	 * Deal cards to this board to start the game.
 	 */
 	private void dealMyCards() {

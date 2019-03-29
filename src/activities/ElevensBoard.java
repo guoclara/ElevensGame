@@ -55,6 +55,9 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean isLegal(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+            if(containsPairSum11(selectedCards)||containsJQK(selectedCards)){
+                return true;
+            }return false;
 	}
 
 	/**
@@ -68,8 +71,29 @@ public class ElevensBoard extends Board {
 	@Override
 	public boolean anotherPlayIsPossible() {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+            if(containsSum()||containsJQK()){
+                return true;
+            }return false;
 	}
-
+        
+        public boolean containsSum(){
+            for(int i = 0; i<9; i++){
+                for(int n = 0; n<9; n++){
+                    if(cardAt(i).pointValue() + cardAt(n).pointValue() == 11){
+                        return true;
+                    }
+                }
+            }return false;
+        }
+         public boolean containsJQK(){
+            String str = "";
+            for(int i = 0; i<9; i++){
+                str+=cardAt(i).rank();
+            }
+            if(str.contains("jack")&&str.contains("queen")&&str.contains("king")){
+                return true;
+            }return false;
+        }
 	/**
 	 * Check for an 11-pair in the selected cards.
 	 * @param selectedCards selects a subset of this board.  It is list
@@ -80,6 +104,15 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsPairSum11(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+            int val = 0;
+            
+            if(selectedCards.size() == 2){
+                val = cardAt(selectedCards.get(0)).pointValue() + cardAt(selectedCards.get(1)).pointValue();
+                if(val == 11){
+                    return true;
+                }
+            }
+            return false;
 	}
 
 	/**
@@ -92,5 +125,11 @@ public class ElevensBoard extends Board {
 	 */
 	private boolean containsJQK(List<Integer> selectedCards) {
 		/* *** TO BE IMPLEMENTED IN ACTIVITY 9 *** */
+            if(selectedCards.size() == 3){
+               int val = cardAt(selectedCards.get(0)).pointValue() + cardAt(selectedCards.get(1)).pointValue()+ cardAt(selectedCards.get(2)).pointValue();
+               if(val == 0){
+                   return true;
+               }
+            }return false;
 	}
 }
